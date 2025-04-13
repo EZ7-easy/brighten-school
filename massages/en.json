@@ -1,0 +1,16 @@
+{
+	"HomePage": {
+		"About": "About Us",
+		"Team": "Team ",
+		"Prices": "Prices",
+		"Gallery": "Gallery",
+		"Careers": "Careers",
+		"firstLesson": "Sign up for your first lesson!",
+		"firstLessonDescription": "Leave a request and our manager will contact you",
+		"name" : "Name",
+		"signUp": "Sign up",
+		"loading": "Loading...",
+		"success": "Success",
+		"error": "Error"
+	}
+}

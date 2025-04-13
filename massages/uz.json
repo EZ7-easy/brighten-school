@@ -1,0 +1,16 @@
+{
+	"HomePage": {
+		"About": "Biz haqimizda",
+		"Team": "Jamoa",
+		"Prices": "Narxlar",
+		"Gallery": "Galereya",
+		"Careers": "Ish bo'yicha",
+		"firstLesson": "Birinchi darsga yoziling!",
+		"firstLessonDescription": "So'rov qoldiring va menejerimiz siz bilan bog'lanadi",
+		"name" : "Ismingiz",
+		"signUp": "Ro'yhatdan o'tish",
+		"loading": "Yuklanmoqda...",
+		"success": "Muvaffaqiyatli",
+		"error": "Xatolik, keyin qayta urinib ko'ring"
+	}
+}
