@@ -8,20 +8,6 @@ function Scores() {
 
   const toggleShow = () => setShowMore(!showMore);
 
-  const description = [
-    `
-          Praesent ac dui fermentum, blandit mi id, aliquam est. Fusce nec ante
-          sed augue sollicitudin viverra. Fusce luctus augue at nisi euismod
-          tempor. Duis consequat auctor mollis. Maecenas vestibulum hendrerit
-          lacus sit amet vehicula. Sed molestie diam nec metus fringilla
-          pellentesque. Vestibulum sit amet tincidunt nisi, eget tincidunt mi.
-          Pellentesque egestas laoreet nulla, et consectetur lorem dictum quis.
-          Suspendisse non fringilla ex. Proin congue id sapien ut rhoncus. Nunc
-          iaculis purus sit amet rhoncus euismod. Interdum et malesuada fames ac
-          ante ipsum primis in faucibus.
-    `,
-  ];
-
   return (
     <div className="md:flex">
       <div className={""}>

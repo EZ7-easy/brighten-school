@@ -6,7 +6,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { toast } from "sonner";
-import { Send, X } from "lucide-react";
+import { Send } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { prompSchema } from "../../../../../../lib/validation";
 import { IMessage } from "../../../../../../app.types";
@@ -39,8 +39,12 @@ function Conversation() {
         userMessage,
         { role: "system", content: response.data },
       ]);
-    } catch (err) {
-      toast.error("You can only ask me things related to English language!");
+    } catch (error) {
+      toast.error(
+        axios.isAxiosError(error)
+          ? error.response?.data?.message || "Failed to get AI response"
+          : "You can only ask me things related to English language!"
+      );
     } finally {
       form.reset();
     }

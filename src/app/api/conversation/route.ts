@@ -1,5 +1,9 @@
+// eslint-disable @typescript-eslint/no-unsed-vars
+
 import { NextResponse } from "next/server";
 import openai from "../../../../lib/openai";
+import axios from "axios";
+import { toast } from "sonner";
 
 const englishRelatedTopics = [
   "essay",
@@ -55,6 +59,9 @@ export async function POST(req: Request) {
 
     return NextResponse.json(response.choices[0].message.content);
   } catch (error) {
-    return new NextResponse("Internal Error", { status: 500 });
+    const errorMessage = axios.isAxiosError(error)
+      ? error.response?.data?.message || error.message
+      : "You can only ask me things related to English language!";
+    toast.error(errorMessage);
   }
 }
