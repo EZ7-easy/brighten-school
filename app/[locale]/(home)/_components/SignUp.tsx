@@ -24,7 +24,6 @@ import { z } from "zod";
 import { level } from "@/constants";
 import { contactSchema } from "@/lib/validation";
 import { getTranslations } from "@/lib/i18n";
-import { Locale } from "@/lib/i18n";
 
 interface SignUpProps {
   locale?: "en" | "ru" | "uz"; // Note the ? makes it optional
