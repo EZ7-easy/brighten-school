@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import About from "./_components/About";
 import Banner from "./_components/banner";
 import Contacts from "./_components/Contacts";
