@@ -26,7 +26,11 @@ import { contactSchema } from "@/lib/validation";
 import { getTranslations } from "@/lib/i18n";
 import { Locale } from "@/lib/i18n";
 
-const SignUp = ({ params: { locale } }: { params: { locale: Locale } }) => {
+interface SignUpProps {
+  locale?: "en" | "ru" | "uz"; // Note the ? makes it optional
+}
+
+const SignUp = ({ locale = "en" }: SignUpProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const t = getTranslations(locale);
 

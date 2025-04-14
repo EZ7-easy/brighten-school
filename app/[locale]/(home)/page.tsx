@@ -13,19 +13,11 @@ import { Locale } from "@/lib/i18n";
 const Page = ({ params: { locale } }: { params: { locale: Locale } }) => {
   return (
     <>
-      <Banner
-        params={{
-          locale: locale,
-        }}
-      />
+      <Banner />
       <About />
       <Team />
       {/* <Prices/> */}
-      <SignUp
-        params={{
-          locale: locale,
-        }}
-      />
+      <SignUp />
       <Map />
       <Gallery />
       <Contacts />

@@ -26,7 +26,11 @@ import { contactSchema } from "@/lib/validation";
 import { getTranslations } from "@/lib/i18n";
 import { Locale } from "@/lib/i18n";
 
-function Banner({ params: { locale } }: { params: { locale: Locale } }) {
+interface BannerProps {
+  locale?: "en" | "ru" | "uz"; // Note the ? makes it optional
+}
+
+function Banner({ locale = "en" }: BannerProps) {
   const [isLoading, setIsLoading] = useState(false);
   const t = getTranslations(locale);
 
