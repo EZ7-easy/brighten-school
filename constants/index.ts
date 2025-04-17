@@ -1,8 +1,8 @@
 export const navLinks = [
   { route: "#About", name: "About" },
   { route: "#Team", name: "Team" },
-  { route: "#Quiz", name: "Quiz" },
-  { route: "#Statistics", name: "Statistics" },
+  { route: "quiz", name: "Quiz" },
+  { route: "statistics", name: "Statistics" },
   { route: "#Gallery", name: "Gallery" },
 ];
 
