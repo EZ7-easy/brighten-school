@@ -23,7 +23,6 @@ import { toast } from "sonner";
 import { z } from "zod";
 import { level } from "@/constants";
 import { contactSchema } from "@/lib/validation";
-import { getTranslations } from "@/lib/i18n";
 
 type Props = {
   t: Record<string, string>;
