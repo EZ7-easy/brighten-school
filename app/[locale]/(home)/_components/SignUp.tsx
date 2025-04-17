@@ -25,13 +25,12 @@ import { level } from "@/constants";
 import { contactSchema } from "@/lib/validation";
 import { getTranslations } from "@/lib/i18n";
 
-interface SignUpProps {
-  locale?: "en" | "ru" | "uz"; // Note the ? makes it optional
-}
+type Props = {
+  t: ReturnType<typeof getTranslations>;
+};
 
-const SignUp = ({ locale = "en" }: SignUpProps) => {
+const SignUp = ({ t }: Props) => {
   const [isLoading, setIsLoading] = useState(false);
-  const t = getTranslations(locale);
 
   const form = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
