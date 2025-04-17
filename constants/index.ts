@@ -4,6 +4,7 @@ export const navLinks = [
   { route: "quiz", name: "Quiz" },
   { route: "statistics", name: "Statistics" },
   { route: "listening", name: "Listening" },
+  { route: "ai", name: "AI" },
   { route: "#Gallery", name: "Gallery" },
 ];
 
