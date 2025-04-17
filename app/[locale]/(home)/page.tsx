@@ -13,8 +13,8 @@ type PageProps = {
   };
 };
 
-const Page = async ({ params }: PageProps) => {
-  const t = await getTranslations(params.locale); // ✅ await this!
+const Page = ({ params }: PageProps) => {
+  const t = getTranslations(params.locale); // Get translations synchronously
 
   return (
     <>
