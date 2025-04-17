@@ -7,14 +7,19 @@ import SignUp from "./_components/SignUp";
 import Team from "./_components/Team";
 import { getTranslations, Locale } from "@/lib/i18n";
 
-type PageProps = {
+// For static generation (SSG)
+export function generateStaticParams() {
+  return [{ locale: "en" }, { locale: "ru" }, { locale: "uz" }];
+}
+
+interface PageProps {
   params: {
     locale: Locale;
   };
-};
+}
 
-const Page = ({ params }: PageProps) => {
-  const t = getTranslations(params.locale); // Get translations synchronously
+export default function Page({ params }: PageProps) {
+  const t = getTranslations(params.locale);
 
   return (
     <>
@@ -27,6 +32,4 @@ const Page = ({ params }: PageProps) => {
       <Contacts />
     </>
   );
-};
-
-export default Page;
+}
