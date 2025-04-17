@@ -3,6 +3,7 @@ export const navLinks = [
   { route: "#Team", name: "Team" },
   { route: "quiz", name: "Quiz" },
   { route: "statistics", name: "Statistics" },
+  { route: "listening", name: "Listening" },
   { route: "#Gallery", name: "Gallery" },
 ];
 
@@ -13,11 +14,14 @@ export const lngs = [
 ];
 
 export const level = [
-  { name: "kids english" },
-  { name: "general english" },
-  { name: "pre-ielts" },
-  { name: "ielts" },
-  { name: "mock test" },
+  { name: "Kids-English" },
+  { name: "Beginner" },
+  { name: "Elementery" },
+  { name: "Pre-intermediate" },
+  { name: "Intermediate" },
+  { name: "MultiLevel" },
+  { name: "Pre-ielts" },
+  { name: "Ielts" },
 ];
 
 export const teachers = [
@@ -104,5 +108,40 @@ export const reviews = [
     name: "User7",
     comment:
       "Integer tincidunt, ipsum ut pellentesque molestie, lacus nunc ultrices elit, et rutrum massa lacus in libero. In lacinia viverra pharetra. Etiam felis massa, elementum sollicitudin mattis at, tristique cursus orci. ",
+  },
+];
+
+export const musics = [
+  {
+    name: "B1 coursebook audio 1",
+    src: "/listening/1.mp3",
+  },
+  {
+    name: "B1 coursebook audio 2",
+    src: "/listening/2.mp3",
+  },
+  {
+    name: "B1 coursebook audio 3",
+    src: "/listening/3.mp3",
+  },
+  {
+    name: "B1 coursebook audio 4",
+    src: "/listening/4.mp3",
+  },
+  {
+    name: "B1 coursebook audio 5",
+    src: "/listening/5.mp3",
+  },
+  {
+    name: "B1 coursebook audio 6",
+    src: "/listening/6.mp3",
+  },
+  {
+    name: "B1 coursebook audio 7",
+    src: "/listening/7.mp3",
+  },
+  {
+    name: "B1 coursebook audio 8",
+    src: "/listening/8.mp3",
   },
 ];
