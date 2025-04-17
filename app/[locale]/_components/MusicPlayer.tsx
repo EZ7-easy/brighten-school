@@ -82,7 +82,7 @@ export default function FixedAudioPlayer({
         <button
           onClick={togglePlayPause}
           aria-label={isPlaying ? "Pause" : "Play"}
-          className="w-12 h-12 bg-gray-500 rounded-full flex items-center justify-center text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+          className="w-12 h-12 md:bg-gray-500 rounded-full flex items-center justify-center text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
         >
           {isPlaying ? (
             <Pause className="h-5 w-5" />
