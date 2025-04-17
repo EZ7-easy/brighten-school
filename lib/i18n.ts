@@ -1,13 +1,14 @@
 export const locales = ["en", "ru", "uz"] as const;
 export type Locale = (typeof locales)[number];
-export const defaultLocale: Locale = "en";
+export const defaultLocale: Locale = "uz";
 
 // Translation dictionaries
 export const translations = {
   en: {
     About: "About Us",
     Team: "Team",
-    Prices: "Prices",
+    Quiz: "Quiz",
+    Statistics: "Statistics",
     Gallery: "Gallery",
     Careers: "Careers",
     firstLesson: "Sign up for your first lesson!",
@@ -21,7 +22,8 @@ export const translations = {
   ru: {
     About: "О нас",
     Team: "Команда",
-    Prices: "Цены",
+    Quiz: "Тесты",
+    Statistics: "Статистика",
     Gallery: "Галерея",
     Careers: "Карьера",
     firstLesson: "Запишитесь на первый урок!",
@@ -35,7 +37,8 @@ export const translations = {
   uz: {
     About: "Biz haqimizda",
     Team: "Jamoa",
-    Prices: "Narxlar",
+    Quiz: "Testlar",
+    Statistics: "Statistika",
     Gallery: "Galereya",
     Careers: "Ish imkoniyatlari",
     firstLesson: "Birinchi darsingizga yoziling!",

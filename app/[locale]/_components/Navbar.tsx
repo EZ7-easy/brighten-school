@@ -8,8 +8,14 @@ import { getTranslations } from "@/lib/i18n";
 import { Locale } from "@/lib/i18n";
 import LanguageSwitcher from "@/components/shared/LanguageSwitcher";
 
-const Page = ({ params: { locale } }: { params: { locale: Locale } }) => {
-  const t = getTranslations(locale);
+interface PageProps {
+  params: {
+    locale: Locale;
+  };
+}
+
+const Page = ({ params }: PageProps) => {
+  const t = getTranslations(params.locale);
 
   return (
     <div
@@ -38,17 +44,13 @@ const Page = ({ params: { locale } }: { params: { locale: Locale } }) => {
       </div>
 
       <div className={"flex max-lg:space-x-3"}>
-        <LanguageSwitcher currentLocale={locale} />
-        <Mobile
-          params={{
-            locale: locale,
-          }}
-        />
-        <div>
+        <LanguageSwitcher currentLocale={params.locale} />
+        <Mobile t={t} />
+        <div className="my-auto">
           <p className={"max-lg:hidden text-xl ml-5"}>
-            78{" "}
+            91{" "}
             <span className={"font-bold"}>
-              777 {""} 77 {""} 07
+              333 {""} 11 {""} 44
             </span>
           </p>
           <hr className={"w-[90%] ml-4 bg-[#004ff9] h-[3px] max-md:hidden"} />

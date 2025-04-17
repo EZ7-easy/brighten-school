@@ -18,6 +18,7 @@ const eslintConfig = [
     rules: {
       "@next/next/no-img-element": "off",
       "react/react-in-jsx-scope": "off",
+      "@radix-ui/no-unused-prop": "off",
       // add more rules to turn off here
     },
   },

@@ -12,12 +12,12 @@ import { AlignCenter } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { navLinks } from "@/constants";
-import { getTranslations } from "@/lib/i18n";
-import { Locale } from "@/lib/i18n";
 
-function Mobile({ params: { locale } }: { params: { locale: Locale } }) {
-  const t = getTranslations(locale);
+type Props = {
+  t: Record<string, string>;
+};
 
+function Mobile({ t }: Props) {
   return (
     <Sheet>
       <SheetTrigger asChild className="lg:hidden">
@@ -29,12 +29,12 @@ function Mobile({ params: { locale } }: { params: { locale: Locale } }) {
           <AlignCenter width={30} height={30} />
         </Button>
       </SheetTrigger>
-      <SheetContent side={"top"} className="py-5">
+      <SheetContent side={"top"} className="py-4">
         <SheetHeader className="items-center">
           <Image src={"/logo.jpg"} alt={"logo"} width={210} height={300} />
           <Separator />
         </SheetHeader>
-        <div className="mt-4 flex flex-col space-y-3">
+        <div className="flex flex-col">
           {navLinks.map((nav) => (
             <Link
               href={`/${nav.route}`}
@@ -44,12 +44,12 @@ function Mobile({ params: { locale } }: { params: { locale: Locale } }) {
               <span>{t[nav.name as keyof typeof t]}</span>
             </Link>
           ))}
-          <div className="flex items-center justify-center gap-4">
+          <div className="flex items-center justify-center gap-4 mt-2">
             <div>
               <p className={"text-xl ml-5"}>
-                78{" "}
+                91{" "}
                 <span className={"font-bold"}>
-                  777 {""} 77 {""} 07
+                  333 {""} 11 {""} 44
                 </span>
               </p>
               <hr className={"w-[90%] ml-4 bg-[#004ff9] h-[3px]"} />

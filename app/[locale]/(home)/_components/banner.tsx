@@ -150,7 +150,7 @@ function Banner({ t }: Props) {
                 disabled={isLoading}
                 className="w-full text-white text-2xl rounded-md bg-[#004ff9] mt-3 hover:bg-[#0033cc] transition duration-200 h-12"
               >
-                Записаться
+                {t.signUp}
               </Button>
             </form>
           </Form>
