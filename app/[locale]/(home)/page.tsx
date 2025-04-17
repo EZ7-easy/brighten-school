@@ -3,20 +3,24 @@ import Banner from "./_components/banner";
 import Contacts from "./_components/Contacts";
 import Gallery from "./_components/Gallery";
 import Map from "./_components/Map";
-// import Prices from '@/app/[locale]/(root)/(home)/_components/Prices'
 import SignUp from "./_components/SignUp";
 import Team from "./_components/Team";
 import { getTranslations, Locale } from "@/lib/i18n";
 
-const Page = ({ params: { locale } }: { params: { locale: Locale } }) => {
-  const t = getTranslations(locale);
+type PageProps = {
+  params: {
+    locale: Locale;
+  };
+};
+
+const Page = async ({ params }: PageProps) => {
+  const t = await getTranslations(params.locale); // ✅ await this!
 
   return (
     <>
       <Banner t={t} />
       <About />
       <Team />
-      {/* <Prices/> */}
       <SignUp t={t} />
       <Map />
       <Gallery />
@@ -24,4 +28,5 @@ const Page = ({ params: { locale } }: { params: { locale: Locale } }) => {
     </>
   );
 };
+
 export default Page;

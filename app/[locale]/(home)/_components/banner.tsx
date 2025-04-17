@@ -26,7 +26,7 @@ import { contactSchema } from "@/lib/validation";
 import { getTranslations } from "@/lib/i18n";
 
 type Props = {
-  t: ReturnType<typeof getTranslations>;
+  t: Record<string, string>;
 };
 
 function Banner({ t }: Props) {
