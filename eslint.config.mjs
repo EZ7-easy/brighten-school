@@ -11,6 +11,16 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+
+  // Add a custom config block at the end to override rules
+  {
+    files: ["**/*.{js,ts,jsx,tsx}"],
+    rules: {
+      "@next/next/no-img-element": "off",
+      "react/react-in-jsx-scope": "off",
+      // add more rules to turn off here
+    },
+  },
 ];
 
 export default eslintConfig;
