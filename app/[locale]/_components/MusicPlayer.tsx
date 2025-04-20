@@ -1,6 +1,7 @@
 // components/FixedAudioPlayer.tsx
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { Pause, Play, Volume2, VolumeX } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 
@@ -82,7 +83,7 @@ export default function FixedAudioPlayer({
         <button
           onClick={togglePlayPause}
           aria-label={isPlaying ? "Pause" : "Play"}
-          className="w-12 h-12 md:bg-gray-500 md:text-white rounded-full flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+          className="w-12 h-12 md:bg-gray-500 max-sm:hidden md:text-white rounded-full flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
         >
           {isPlaying ? (
             <Pause className="h-5 w-5" />
@@ -93,7 +94,20 @@ export default function FixedAudioPlayer({
 
         {/* Track Info and Controls */}
         <div className="flex-grow space-y-2">
-          <h3 className="font-medium text-gray-900 line-clamp-1">{title}</h3>
+          <h3 className="font-medium text-gray-900 line-clamp-1 flex text-sm">
+            <Button
+              onClick={togglePlayPause}
+              aria-label={isPlaying ? "Pause" : "Play"}
+              className="w-5 h-5 my-auto md:hidden bg-white text-black"
+            >
+              {isPlaying ? (
+                <Pause className="h-5 w-5" />
+              ) : (
+                <Play className="h-5 w-5" />
+              )}
+            </Button>
+            {title}
+          </h3>
 
           <audio
             ref={audioRef}

@@ -42,9 +42,7 @@ function Conversation() {
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : "An unknown error occurred";
-      toast.error(
-        `You can only ask me things related to English language! (${errorMessage})`
-      );
+      toast.error(`${errorMessage}`);
     } finally {
       form.reset();
     }
