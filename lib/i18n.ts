@@ -13,6 +13,7 @@ export const translations = {
     Careers: "Careers",
     Listening: "Listening",
     AI: "AI",
+    Profile: "Profile",
     firstLesson: "Sign up for your first lesson!",
     firstLessonDescription: "Leave a request and our manager will contact you",
     name: "Name",
@@ -20,6 +21,9 @@ export const translations = {
     loading: "Loading...",
     success: "Success",
     error: "Error",
+
+    // Auth
+    logout: "Log out",
   },
   ru: {
     About: "О нас",
@@ -30,6 +34,7 @@ export const translations = {
     Careers: "Карьера",
     Listening: "Listening",
     AI: "AI",
+    Profile: "Профиль",
     firstLesson: "Запишитесь на первый урок!",
     firstLessonDescription: "Оставьте заявку, и наш менеджер свяжется с вами",
     name: "Имя",
@@ -37,6 +42,9 @@ export const translations = {
     loading: "Загрузка...",
     success: "Успех",
     error: "Ошибка",
+
+    // Auth
+    logout: "Выход",
   },
   uz: {
     About: "Biz haqimizda",
@@ -46,6 +54,7 @@ export const translations = {
     Gallery: "Galereya",
     Listening: "Listening",
     AI: "AI",
+    Profile: "Profil",
     Careers: "Ish imkoniyatlari",
     firstLesson: "Birinchi darsingizga yoziling!",
     firstLessonDescription:
@@ -55,6 +64,9 @@ export const translations = {
     loading: "Yuklanmoqda...",
     success: "Muvaffaqiyatli",
     error: "Xato",
+
+    // Auth
+    logout: "Chiqish",
   },
 } as const;
 

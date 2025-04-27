@@ -6,6 +6,9 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true, // Disables TypeScript errors during builds
   },
+  images: {
+    domains: ["img.clerk.com"], // <-- ADD THIS LINE
+  },
 };
 
 export default nextConfig;

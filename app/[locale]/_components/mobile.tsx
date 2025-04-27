@@ -8,10 +8,11 @@ import {
   SheetHeader,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { AlignCenter } from "lucide-react";
+import { AlignCenter, LayoutDashboard, LogOut } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { navLinks } from "@/constants";
+import { SignedIn } from "@clerk/nextjs";
 
 type Props = {
   t: Record<string, string>;
@@ -35,15 +36,34 @@ function Mobile({ t }: Props) {
           <Separator />
         </SheetHeader>
         <div className="flex flex-col">
-          {navLinks.map((nav) => (
-            <Link
-              href={`/${nav.route}`}
-              key={nav.route}
-              className="flex h-12 cursor-pointer items-center gap-2 rounded-sm px-3 transition-colors hover:bg-blue-400/20"
-            >
-              <span>{t[nav.name as keyof typeof t]}</span>
-            </Link>
-          ))}
+          <SignedIn>
+            <div className="space-y-2 flex flex-col pl-4 mb-3 text-gray-700">
+              <Link href={"/profile"}>
+                <div className="flex gap-2">
+                  <LayoutDashboard /> {t.Profile}
+                </div>
+              </Link>
+
+              <div className="flex gap-2">
+                <LogOut /> {t.logout}
+              </div>
+            </div>
+
+            <Separator />
+          </SignedIn>
+          <div className={"space-y-2 flex flex-col mt-3 p-3"}>
+            {navLinks.map((nav, idx) => (
+              <Link
+                href={`/${nav.route}`}
+                key={idx}
+                className={
+                  "pl-2 text-gray-600 hover:text-primary font-semibold"
+                }
+              >
+                {t[nav.name as keyof typeof t]}
+              </Link>
+            ))}
+          </div>
           <div className="flex items-center justify-center gap-4 mt-2">
             <div>
               <p className={"text-xl ml-5"}>
