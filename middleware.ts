@@ -1,17 +1,25 @@
-import { getAuth } from "@clerk/nextjs/server"; // <-- use getAuth not auth
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
-import { locales, defaultLocale } from "./lib/i18n";
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+import { locales, defaultLocale } from './lib/i18n';
 
-export async function middleware(request: NextRequest) {
+const isProtectedRoute = createRouteMatcher([
+  '/ai(.*)',
+  '/listening(.*)',
+  '/quiz(.*)',
+  '/statistics(.*)',
+  '/profile(.*)',
+]);
+
+export default clerkMiddleware(async (auth, request) => {
   const { pathname } = request.nextUrl;
 
   // Skip public files and API routes
   const PUBLIC_FILE = /\.(.*)$/;
   if (
     PUBLIC_FILE.test(pathname) ||
-    pathname.startsWith("/api") ||
-    pathname.startsWith("/_next")
+    pathname.startsWith('/api') ||
+    pathname.startsWith('/_next')
   ) {
     return NextResponse.next();
   }
@@ -26,32 +34,18 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL(`/${locale}${pathname}`, request.url));
   }
 
-  // PROTECT routes
-  const protectedRoutes = [
-    "/ai",
-    "/listening",
-    "/quiz",
-    "/statistics",
-    "/profile",
-  ];
-
-  const isProtected = protectedRoutes.some((route) =>
-    pathname.startsWith(route)
-  );
-
-  if (isProtected) {
-    const { userId } = getAuth(request); // <-- FIX: use getAuth(request)
-
-    if (!userId) {
-      const signInUrl = new URL("/sign-in", request.url);
-      signInUrl.searchParams.set("redirect_url", request.nextUrl.pathname);
-      return NextResponse.redirect(signInUrl);
+  // PROTECT routes using Clerk's built-in auth
+  if (isProtectedRoute(request)) {
+    const authObj = await auth(); // Await the auth object
+    if (!authObj.userId) {
+      // Redirect to sign-in page if not authenticated
+      return NextResponse.redirect(new URL('/sign-in', request.url));
     }
   }
 
   return NextResponse.next();
-}
+});
 
 export const config = {
-  matcher: ["/((?!_next|api|favicon.ico|images).*)"],
+  matcher: ['/((?!_next|api|favicon.ico|images).*)'],
 };

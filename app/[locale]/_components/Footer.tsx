@@ -28,7 +28,11 @@ import { z } from "zod";
 import { getTranslations } from "@/lib/i18n";
 import { Locale } from "@/lib/i18n";
 
-const Footer = ({ params: { locale } }: { params: { locale: Locale } }) => {
+type FooterProps = {
+  locale: Locale;
+};
+
+const Footer = ({ locale }: FooterProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const t = getTranslations(locale);
 

@@ -21,19 +21,17 @@ import {
   SignInButton,
   SignOutButton,
   UserButton,
-  useUser,
 } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { LayoutDashboard, LogIn, LogOut } from "lucide-react";
+import UserIcon from "@/components/navbar/UserIcon";
 
-interface PageProps {
-  params: {
-    locale: Locale;
-  };
-}
+type NavbarProps = {
+  locale: Locale;
+};
 
-const Page = ({ params }: PageProps) => {
-  const t = getTranslations(params.locale);
+export default function Navbar({ locale }: NavbarProps){
+  const t = getTranslations(locale);
 
   return (
     <div
@@ -47,7 +45,7 @@ const Page = ({ params }: PageProps) => {
       </div>
 
       <div className="flex">
-        <LanguageSwitcher currentLocale={params.locale} />
+        <LanguageSwitcher currentLocale={locale} />
         <SignedIn>
           <Menubar className="border-none shadow-none">
             <MenubarMenu>
@@ -105,7 +103,7 @@ const Page = ({ params }: PageProps) => {
         </SignedOut>
 
         <Mobile t={t} />
-        <div className="my-auto">
+        <div className="my-auto h-full">
           <p className="max-lg:hidden text-xl ml-5">
             91{" "}
             <span className="font-bold">
@@ -119,4 +117,3 @@ const Page = ({ params }: PageProps) => {
   );
 };
 
-export default Page;

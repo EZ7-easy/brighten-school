@@ -6,6 +6,7 @@ import {
   Sheet,
   SheetContent,
   SheetHeader,
+  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { AlignCenter, LayoutDashboard, LogOut } from "lucide-react";
@@ -21,6 +22,7 @@ type Props = {
 function Mobile({ t }: Props) {
   return (
     <Sheet>
+      <SheetTitle></SheetTitle>
       <SheetTrigger asChild className="lg:hidden">
         <Button
           size={"icon"}
@@ -29,6 +31,7 @@ function Mobile({ t }: Props) {
         >
           <AlignCenter width={30} height={30} />
         </Button>
+        
       </SheetTrigger>
       <SheetContent side={"top"} className="py-4">
         <SheetHeader className="items-center">

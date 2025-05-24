@@ -4,33 +4,27 @@ import { Toaster } from "sonner";
 import Navbar from "./_components/Navbar";
 import Footer from "./_components/Footer";
 
-export default function LocaleLayout({
+export default async function LocaleLayout({
   children,
-  params: { locale },
+  params,
 }: {
   children: React.ReactNode;
-  params: { locale: Locale };
+  params: { locale: string };
 }) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  if (!locales.includes(locale as any)) {
-    notFound();
+  // ✅ Validate locale
+  if (!locales.includes(params.locale as Locale)) {
+    notFound(); // Shows 404 page if invalid locale
   }
+
+  const locale = params.locale as Locale;
 
   return (
     <>
       <Toaster position="top-center" />
       <main>
-        <Navbar
-          params={{
-            locale: locale,
-          }}
-        />
+        <Navbar locale={locale} />
         {children}
-        <Footer
-          params={{
-            locale: locale,
-          }}
-        />
+        <Footer locale={locale} />
       </main>
     </>
   );

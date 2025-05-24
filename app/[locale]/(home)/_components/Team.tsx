@@ -5,7 +5,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import Image from "next/image";
 import { teachers } from "@/constants";
 import Autoplay from "embla-carousel-autoplay";
@@ -37,6 +37,7 @@ const Team = () => {
               }
             >
               <Dialog>
+                <DialogTitle></DialogTitle>
                 <DialogTrigger>
                   <div className={" m-10"}>
                     <Image
