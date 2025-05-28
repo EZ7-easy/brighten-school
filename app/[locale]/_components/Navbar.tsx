@@ -24,7 +24,6 @@ import {
 } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { LayoutDashboard, LogIn, LogOut } from "lucide-react";
-import UserIcon from "@/components/navbar/UserIcon";
 
 type NavbarProps = {
   locale: Locale;
