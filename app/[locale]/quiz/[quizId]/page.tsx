@@ -78,6 +78,7 @@ export default function Quiz() {
       <ProgressBar progress={progress} />
 
       <QuestionCard
+        key={currentQuestionIndex}
         question={currentQuestion.question}
         options={currentQuestion.options}
         selectedOption={selectedOption}
