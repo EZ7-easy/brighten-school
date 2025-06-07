@@ -48,7 +48,7 @@ export const createProfileAction = async (
     await client.users.updateUserMetadata(user.id, {
       privateMetadata: {
         hasProfile: true,
-        isAdmin: false,
+        role: "user",
       },
     });
   } catch (error) {
@@ -124,3 +124,16 @@ export const updateProfileAction = async (
 //     return renderError(error);
 //   }
 // };
+
+const getAuthUserWithRole = async () => {
+  const user = await currentUser();
+  if (!user) throw new Error("You must be logged in to access this route");
+
+  const role = user.privateMetadata.role;
+  if (!role) throw new Error("User role not found in metadata");
+
+  return {
+    ...user,
+    role,
+  };
+};
