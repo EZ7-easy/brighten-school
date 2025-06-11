@@ -30,3 +30,12 @@ export const getOneQuiz = async (id: string) => {
 		throw new Error('Failed to fetch quiz')
 	}
 }
+
+export const deleteQuiz = async (id: string) => {
+	try {
+		await connectToDatabase()
+		await Quiz.findByIdAndDelete(id)
+	} catch (error) {
+		throw new Error('Failed to delete quiz')
+	}
+}

@@ -25,6 +25,7 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { formSchema } from "@/lib/validation";
+import GetQuiz from './_components/getQuiz';
 
 type QuizFormData = z.infer<typeof formSchema>;
 
@@ -66,16 +67,7 @@ export default function AdminClientPage({ userName }: { userName: string }) {
   };
   
   return (
-    <main className="p-6 space-y-10 max-w-4xl mx-auto">
-      {/* === Dashboard Header === */}
-      <section className="space-y-6">
-        <h1 className="text-3xl font-bold">🧠 Admin Quiz Dashboard</h1>
-        <div>
-          <h1 className="text-lg">Welcome to admin dashboard</h1>
-          <h2 className="text-xl font-semibold underline">{userName}</h2>
-        </div>
-      </section>
-      
+    <main className="p-6 space-y-10 max-w-4xl mx-auto">      
       {/* === Create Quiz Form === */}
       <section className="space-y-6">
         <h2 className="text-2xl font-bold">📝 Create New Quiz</h2>

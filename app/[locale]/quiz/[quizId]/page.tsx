@@ -91,11 +91,11 @@ export default function QuizPage() {
         <h2 className="text-xl font-semibold">
           Question {currentQuestionIndex + 1} of {totalQuestions}
         </h2>
-        <div className={`px-3 py-1 rounded-full text-sm ${
+        {/* <div className={`px-3 py-1 rounded-full text-sm ${
           timeLeft <= 10 ? 'bg-red-100 text-red-800' : 'bg-blue-100 text-blue-800'
         }`}>
           {timeLeft}s
-        </div>
+        </div> */}
       </div>
       
       <div className="w-full bg-gray-200 rounded-full h-2 mb-6">
