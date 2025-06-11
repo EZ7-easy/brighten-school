@@ -74,6 +74,7 @@ export default function QuizPage() {
     }
   }, [selectedOption, currentQuestion, currentQuestionIndex, score, router, totalQuestions]);
   
+  
   useEffect(() => {
     if (timeLeft === 0) handleNext();
     const timer = setInterval(() => setTimeLeft(prev => prev - 1), 1000);
