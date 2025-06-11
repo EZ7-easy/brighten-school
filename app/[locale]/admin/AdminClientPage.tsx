@@ -1,5 +1,7 @@
 "use client";
 
+import { createQuiz } from '@/actions/quizAction'
+import { useRouter } from 'next/navigation'
 import { useForm, useFieldArray } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -32,31 +34,37 @@ export default function AdminClientPage({ userName }: { userName: string }) {
     defaultValues: {
       title: "",
       level: "A1",
+      description: "",
       questions: [
         {
           question: "",
           options: ["", "", "", ""],
-          correct: "" as any, // workaround for initial empty string
+          correct: ""
         },
       ],
     },
   });
-
+  const router = useRouter()
+  
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = form;
-
+  console.log(errors)
   const { fields, append, remove } = useFieldArray<QuizFormData, "questions">({
     control,
     name: "questions",
   });
-
+  
   const onSubmit = (data: QuizFormData) => {
-    console.log("Quiz Submitted:", data);
+    createQuiz({...data})
+    .then(() => {
+      form.reset()
+      router.push('/en/quiz')
+    })
   };
-
+  
   return (
     <main className="p-6 space-y-10 max-w-4xl mx-auto">
       {/* === Dashboard Header === */}
@@ -67,11 +75,11 @@ export default function AdminClientPage({ userName }: { userName: string }) {
           <h2 className="text-xl font-semibold underline">{userName}</h2>
         </div>
       </section>
-
+      
       {/* === Create Quiz Form === */}
       <section className="space-y-6">
         <h2 className="text-2xl font-bold">📝 Create New Quiz</h2>
-
+        
         <Form {...form}>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             {/* Quiz Title */}
@@ -88,7 +96,21 @@ export default function AdminClientPage({ userName }: { userName: string }) {
                 </FormItem>
               )}
             />
-
+            
+            <FormField
+              control={control}
+              name="description"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Quiz Description</FormLabel>
+                  <FormControl>
+                    <Textarea placeholder="e.g. Basic Food Vocabulary" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            
             {/* Level Selector */}
             <FormField
               control={control}
@@ -114,11 +136,11 @@ export default function AdminClientPage({ userName }: { userName: string }) {
                 </FormItem>
               )}
             />
-
+            
             {/* Questions List */}
             <div className="space-y-4">
               <h3 className="text-lg font-semibold">Questions</h3>
-
+              
               {fields.map((field, index) => (
                 <div key={field.id} className="border rounded p-4 space-y-4">
                   {/* Question Text */}
@@ -135,7 +157,7 @@ export default function AdminClientPage({ userName }: { userName: string }) {
                       </FormItem>
                     )}
                   />
-
+                  
                   {/* Options A-D */}
                   {["A", "B", "C", "D"].map((letter, optIndex) => (
                     <FormField
@@ -157,7 +179,7 @@ export default function AdminClientPage({ userName }: { userName: string }) {
                       )}
                     />
                   ))}
-
+                  
                   {/* Correct Answer Select */}
                   <FormField
                     control={control}
@@ -183,7 +205,7 @@ export default function AdminClientPage({ userName }: { userName: string }) {
                       </FormItem>
                     )}
                   />
-
+                  
                   {/* Remove Button */}
                   {fields.length > 1 && (
                     <Button
@@ -196,7 +218,7 @@ export default function AdminClientPage({ userName }: { userName: string }) {
                   )}
                 </div>
               ))}
-
+              
               {/* Add Question */}
               <Button
                 type="button"
@@ -207,7 +229,7 @@ export default function AdminClientPage({ userName }: { userName: string }) {
                 + Add Question
               </Button>
             </div>
-
+            
             {/* Submit */}
             <Button type="submit">Save Quiz</Button>
           </form>
