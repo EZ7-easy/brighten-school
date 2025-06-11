@@ -125,15 +125,15 @@ export const updateProfileAction = async (
 //   }
 // };
 
-const getAuthUserWithRole = async () => {
-  const user = await currentUser();
-  if (!user) throw new Error("You must be logged in to access this route");
+// export const getAuthUserWithRole = async () => {
+//   const user = await currentUser();
+//   if (!user) throw new Error("You must be logged in to access this route");
 
-  const role = user.privateMetadata.role;
-  if (!role) throw new Error("User role not found in metadata");
+//   const role = user.privateMetadata.role;
+//   if (!role) throw new Error("User role not found in metadata");
 
-  return {
-    ...user,
-    role,
-  };
-};
+//   return {
+//     ...user,
+//     role,
+//   };
+// };
