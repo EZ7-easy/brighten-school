@@ -1,4 +1,5 @@
-import { Locale, locales } from "../../lib/i18n";
+// layout.tsx
+import { Locale, locales, getTranslations } from "../../lib/i18n";
 import { notFound } from "next/navigation";
 import { Toaster } from "sonner";
 import Navbar from "./_components/Navbar";
@@ -11,18 +12,18 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  // ✅ Validate locale
   if (!locales.includes(params.locale as Locale)) {
-    notFound(); // Shows 404 page if invalid locale
+    notFound();
   }
 
   const locale = params.locale as Locale;
+  const t = await getTranslations(locale); // ✅ Server call
 
   return (
     <>
       <Toaster position="top-center" />
       <main>
-        <Navbar locale={locale} />
+        <Navbar locale={locale} t={t} /> {/* ✅ pass `t` */}
         {children}
         <Footer locale={locale} />
       </main>

@@ -1,7 +1,7 @@
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import GetQuiz from "./_components/getQuiz";
-import AdminClientPage from "./AdminClientPage";
+import AdminClientPage from "./_components/AdminClientPage";
 
 export default async function AdminPage() {
   const user = await currentUser();

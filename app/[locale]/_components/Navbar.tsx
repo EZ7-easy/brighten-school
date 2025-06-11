@@ -1,10 +1,10 @@
+// components/shared/Navbar.tsx
 "use client";
 
 import Mobile from "./mobile";
 import Link from "next/link";
 import { navLinks } from "@/constants";
 import Image from "next/image";
-import { getTranslations } from "@/lib/i18n";
 import { Locale } from "@/lib/i18n";
 import LanguageSwitcher from "@/components/shared/LanguageSwitcher";
 import {
@@ -27,18 +27,17 @@ import { LayoutDashboard, LogIn, LogOut } from "lucide-react";
 
 type NavbarProps = {
   locale: Locale;
+  t: Record<string, string>;
 };
 
-export default function Navbar({ locale }: NavbarProps){
-  const t = getTranslations(locale);
-
+export default function Navbar({ locale, t }: NavbarProps) {
   return (
     <div
       id="Navbar"
       className="flex justify-between md:p-5 max-md:p-3 sticky top-0 bg-white z-50 border-b border-gray-300"
     >
       <div>
-        <Link href="/" className="font-bold text-3xl">
+        <Link href={`/${locale}`} className="font-bold text-3xl">
           <Image src="/logo.jpg" alt="logo" width={100} height={100} />
         </Link>
       </div>
@@ -49,7 +48,6 @@ export default function Navbar({ locale }: NavbarProps){
           <Menubar className="border-none shadow-none">
             <MenubarMenu>
               <MenubarTrigger>
-                {/* Hide Clerk's dropdown but keep the avatar */}
                 <UserButton
                   afterSignOutUrl="/"
                   appearance={{
@@ -62,7 +60,6 @@ export default function Navbar({ locale }: NavbarProps){
                 />
               </MenubarTrigger>
 
-              {/* Your custom menu */}
               <MenubarContent className="max-sm:hidden">
                 <Link href="/profile">
                   <MenubarItem className="flex gap-2">
@@ -77,11 +74,12 @@ export default function Navbar({ locale }: NavbarProps){
                     </div>
                   </SignOutButton>
                 </MenubarItem>
+
                 <MenubarSeparator />
                 <div className="space-y-2 flex flex-col">
                   {navLinks.map((nav, idx) => (
                     <Link
-                      href={`/${nav.route}`}
+                      href={`/${locale}/${nav.route}`}
                       key={idx}
                       className="pl-2 text-gray-600 hover:text-primary font-semibold"
                     >
@@ -93,6 +91,7 @@ export default function Navbar({ locale }: NavbarProps){
             </MenubarMenu>
           </Menubar>
         </SignedIn>
+
         <SignedOut>
           <SignInButton mode="modal">
             <Button size="icon" variant="ghost">
@@ -102,11 +101,12 @@ export default function Navbar({ locale }: NavbarProps){
         </SignedOut>
 
         <Mobile t={t} />
+
         <div className="my-auto h-full">
           <p className="max-lg:hidden text-xl ml-5">
             91{" "}
             <span className="font-bold">
-              333 {""} 11 {""} 44
+              333{" "}11{" "}44
             </span>
           </p>
           <hr className="w-[90%] ml-4 bg-[#004ff9] h-[3px] max-md:hidden" />
@@ -114,5 +114,4 @@ export default function Navbar({ locale }: NavbarProps){
       </div>
     </div>
   );
-};
-
+}
