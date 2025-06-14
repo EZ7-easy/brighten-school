@@ -87,18 +87,18 @@ export default function QuizPage() {
   
   return (
     <div className="container mx-auto py-8 max-w-2xl">
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex justify-between items-center mb-6 max-md:px-2">
         <h2 className="text-xl font-semibold">
           Question {currentQuestionIndex + 1} of {totalQuestions}
         </h2>
-        <div className={`px-3 py-1 rounded-full text-sm ${
-          timeLeft <= 10 ? 'bg-red-100 text-red-800' : 'bg-blue-100 text-blue-800'
-        }`}>
-          {timeLeft}s
-        </div>
+        {/* <div className={`px-3 py-1 rounded-full text-sm ${ */}
+        {/*   timeLeft <= 10 ? 'bg-red-100 text-red-800' : 'bg-blue-100 text-blue-800' */}
+        {/* }`}> */}
+        {/*   {timeLeft}s */}
+        {/* </div> */}
       </div>
       
-      <div className="w-full bg-gray-200 rounded-full h-2 mb-6">
+      <div className="max-md:w-[95%] w-full bg-gray-200 rounded-full h-2 mb-6 max-lg:mx-2 ">
         <div
           className="bg-blue-600 h-2 rounded-full"
           style={{ width: `${progress}%` }}
