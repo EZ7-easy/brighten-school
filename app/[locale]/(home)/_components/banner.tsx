@@ -17,7 +17,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -30,6 +30,9 @@ type Props = {
 
 function Banner({ t }: Props) {
   const [isLoading, setIsLoading] = useState(false);
+  const [isMainImageLoaded, setIsMainImageLoaded] = useState(false);
+  const [isBlurImageLoaded, setIsBlurImageLoaded] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
 
   const form = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
@@ -39,6 +42,24 @@ function Banner({ t }: Props) {
       level: "",
     },
   });
+
+  // Preload images and track loading state
+  useEffect(() => {
+    const blurImg = new Image();
+    blurImg.src = "/home/room-interior-design-blur.jpg";
+    blurImg.onload = () => setIsBlurImageLoaded(true);
+
+    const mainImg = new Image();
+    mainImg.src = "/home/room-interior-design.jpg";
+    mainImg.onload = () => setIsMainImageLoaded(true);
+  }, []);
+
+  // Combine loading states
+  useEffect(() => {
+    if (isBlurImageLoaded && isMainImageLoaded) {
+      setImagesLoaded(true);
+    }
+  }, [isBlurImageLoaded, isMainImageLoaded]);
 
   function onSubmit(values: z.infer<typeof contactSchema>) {
     setIsLoading(true);
@@ -74,8 +95,31 @@ level: ${values.level}
   }
 
   return (
-    <section className="bg-[url(/home/room-interior-design.jpg)] bg-cover bg-no-repeat bg-center">
-      <div className="flex justify-center md:justify-end py-16 md:py-20 px-4 md:pr-12">
+    <section className="relative h-full">
+      {/* Fallback background */}
+      <div className="absolute inset-0 bg-gray-800 z-0" />
+
+      {/* Blurred Low-Quality Placeholder with fade-out */}
+      <div
+        className={`absolute inset-0 bg-[url('/home/room-interior-design-blur.jpg')] bg-cover bg-no-repeat bg-center blur-lg scale-105 z-10 transition-opacity duration-700 ${
+          imagesLoaded ? "opacity-0" : "opacity-100"
+        }`}
+      />
+
+      {/* Main Background with fade-in */}
+      <div
+        className={`absolute inset-0 bg-[url('/home/room-interior-design.jpg')] bg-cover bg-no-repeat bg-center z-20 transition-opacity duration-700 ${
+          imagesLoaded ? "opacity-100" : "opacity-0"
+        }`}
+      />
+
+      {/* Loading skeleton */}
+      {!imagesLoaded && (
+        <div className="absolute inset-0 bg-gray-200 z-30 animate-pulse" />
+      )}
+
+      {/* Content */}
+      <div className="relative z-40 flex justify-center md:justify-end py-16 md:py-20 px-4 md:pr-12">
         <div className="bg-gray-900/90 text-white backdrop-blur-md p-6 md:p-10 rounded-2xl shadow-lg w-full max-w-lg">
           <p className="text-2xl md:text-3xl font-semibold mb-3">
             {t.firstLesson}
@@ -86,7 +130,7 @@ level: ${values.level}
 
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-              {/* Name */}
+              {/* Name Field */}
               <FormField
                 control={form.control}
                 name="name"
@@ -105,7 +149,7 @@ level: ${values.level}
                 )}
               />
 
-              {/* Phone */}
+              {/* Phone Field */}
               <FormField
                 control={form.control}
                 name="tel"
@@ -124,7 +168,7 @@ level: ${values.level}
                 )}
               />
 
-              {/* Level */}
+              {/* Level Select */}
               <FormField
                 control={form.control}
                 name="level"
@@ -151,7 +195,7 @@ level: ${values.level}
 
               {/* Submit Button */}
               <Button
-                disabled={isLoading}
+                disabled={isLoading || !imagesLoaded}
                 type="submit"
                 className="w-full h-12 text-xl bg-[#004ff9] hover:bg-[#0033cc] transition rounded-md"
               >
