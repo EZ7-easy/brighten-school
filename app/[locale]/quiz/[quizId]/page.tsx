@@ -82,7 +82,15 @@ export default function QuizPage() {
     return () => clearInterval(timer);
   }, [timeLeft, handleNext]);
 
-  if (loading) return <div className="text-center py-8">Loading quiz...</div>;
+  if (loading)
+    return (
+      <div className="flex flex-col items-center justify-center h-screen space-y-4">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-opacity-70"></div>
+        <p className="text-lg font-medium text-gray-700">
+          Loading quiz, please wait...
+        </p>
+      </div>
+    );
   if (error)
     return <div className="text-center py-8 text-red-500">{error}</div>;
   if (!quiz) return <div className="text-center py-8">Quiz not found</div>;
