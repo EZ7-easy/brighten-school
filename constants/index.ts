@@ -2,7 +2,6 @@ export const navLinks = [
   { route: "#About", name: "About" },
   { route: "#Team", name: "Team" },
   { route: "quiz", name: "Quiz" },
-  { route: "statistics", name: "Statistics" },
   { route: "listening", name: "Listening" },
   { route: "ai", name: "AI" },
   { route: "#Gallery", name: "Gallery" },

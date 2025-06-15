@@ -45,7 +45,7 @@ export default function Navbar({ locale, t }: NavbarProps) {
       <div className="flex">
         <LanguageSwitcher currentLocale={locale} />
         <SignedIn>
-          <Menubar className="border-none shadow-none">
+          <Menubar className="border-none shadow-none max-sm:hidden">
             <MenubarMenu>
               <MenubarTrigger>
                 <UserButton
@@ -104,10 +104,7 @@ export default function Navbar({ locale, t }: NavbarProps) {
 
         <div className="my-auto h-full">
           <p className="max-lg:hidden text-xl ml-5">
-            91{" "}
-            <span className="font-bold">
-              333{" "}11{" "}44
-            </span>
+            91 <span className="font-bold">333 11 44</span>
           </p>
           <hr className="w-[90%] ml-4 bg-[#004ff9] h-[3px] max-md:hidden" />
         </div>
