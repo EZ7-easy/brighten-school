@@ -1,41 +1,68 @@
-// components/SmartImage.tsx
 "use client";
 
-import Image, { ImageProps } from "next/image";
+import { cn } from "@/lib/utils";
+import Image from "next/image";
 import { useState } from "react";
 
-interface SmartImageProps extends ImageProps {
-  fallbackSrc?: string;
+interface Props {
+  src: string;
+  alt: string;
   className?: string;
+  width?: number;
+  height?: number;
+  fill?: boolean;
+  priority?: boolean;
+  quality?: number;
 }
 
-export default function SmartImage({
-  src,
+function SmartImage({
   alt,
-  fallbackSrc = "/fallback.jpg",
-  className = "",
-  ...props
-}: SmartImageProps) {
-  const [imgSrc, setImgSrc] = useState(src);
-  const [isLoading, setIsLoading] = useState(true);
+  src,
+  className,
+  width,
+  height,
+  fill = false,
+  priority = false,
+  quality = 80,
+}: Props) {
+  const [loading, setLoading] = useState(true);
 
   return (
-    <div className={`relative ${className} overflow-hidden`}>
+    <div
+      className={cn(
+        "relative overflow-hidden",
+        !fill && "inline-block", // Only for fixed dimensions
+        className
+      )}
+    >
       <Image
-        {...props}
-        src={imgSrc}
+        src={src}
         alt={alt}
-        onLoadingComplete={() => setIsLoading(false)}
-        onError={() => {
-          setImgSrc(fallbackSrc);
-          setIsLoading(false);
-        }}
-        loading="lazy"
-        placeholder="empty"
-        className={`transition-all duration-700 ease-in-out w-full h-full object-cover
-          ${isLoading ? "opacity-0 blur-lg scale-105" : "opacity-100 blur-0 scale-100"}
-        `}
+        width={width}
+        height={height}
+        fill={fill}
+        priority={priority}
+        quality={quality}
+        sizes={
+          fill
+            ? "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            : undefined
+        }
+        className={cn(
+          "object-cover duration-700 ease-in-out transition-all",
+          loading
+            ? "scale-110 blur-xl grayscale"
+            : "scale-100 blur-0 grayscale-0"
+        )}
+        onLoadingComplete={() => setLoading(false)}
+        onError={() => setLoading(false)}
       />
+
+      {loading && (
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-pulse" />
+      )}
     </div>
   );
 }
+
+export default SmartImage;

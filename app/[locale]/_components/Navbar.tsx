@@ -23,7 +23,7 @@ import {
 } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { LayoutDashboard, LogIn, LogOut } from "lucide-react";
-import SmartImage from "@/components/shared/SmartImage";
+import Image from "next/image";
 
 type NavbarProps = {
   locale: Locale;
@@ -38,7 +38,7 @@ export default function Navbar({ locale, t }: NavbarProps) {
     >
       <div>
         <Link href={`/${locale}`} className="font-bold text-3xl">
-          <SmartImage src="/logo.jpg" alt="logo" width={100} height={100} />
+          <Image src="/logo.jpg" alt="logo" width={100} height={100} />
         </Link>
       </div>
 

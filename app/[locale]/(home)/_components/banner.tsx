@@ -43,7 +43,6 @@ function Banner({ t }: Props) {
     },
   });
 
-  // Preload images and track loading state
   useEffect(() => {
     const blurImg = new Image();
     blurImg.src = "/home/room-interior-design-blur.jpg";
@@ -54,7 +53,6 @@ function Banner({ t }: Props) {
     mainImg.onload = () => setIsMainImageLoaded(true);
   }, []);
 
-  // Combine loading states
   useEffect(() => {
     if (isBlurImageLoaded && isMainImageLoaded) {
       setImagesLoaded(true);
@@ -95,13 +93,13 @@ level: ${values.level}
   }
 
   return (
-    <section className="relative h-full">
+    <section className="relative h-full w-full overflow-hidden">
       {/* Fallback background */}
       <div className="absolute inset-0 bg-gray-800 z-0" />
 
       {/* Blurred Low-Quality Placeholder with fade-out */}
       <div
-        className={`absolute inset-0 bg-[url('/home/room-interior-design-blur.jpg')] bg-cover bg-no-repeat bg-center blur-lg scale-105 z-10 transition-opacity duration-700 ${
+        className={`absolute inset-0 bg-[url('/home/room-interior-design-blur.jpg')] bg-cover bg-no-repeat bg-center blur-lg z-10 transition-opacity duration-700 ${
           imagesLoaded ? "opacity-0" : "opacity-100"
         }`}
       />
@@ -130,7 +128,6 @@ level: ${values.level}
 
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-              {/* Name Field */}
               <FormField
                 control={form.control}
                 name="name"
@@ -149,7 +146,6 @@ level: ${values.level}
                 )}
               />
 
-              {/* Phone Field */}
               <FormField
                 control={form.control}
                 name="tel"
@@ -168,7 +164,6 @@ level: ${values.level}
                 )}
               />
 
-              {/* Level Select */}
               <FormField
                 control={form.control}
                 name="level"
@@ -193,7 +188,6 @@ level: ${values.level}
                 )}
               />
 
-              {/* Submit Button */}
               <Button
                 disabled={isLoading || !imagesLoaded}
                 type="submit"
