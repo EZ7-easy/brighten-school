@@ -11,9 +11,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import Image from "next/image";
 import { teachers } from "@/constants";
 import Autoplay from "embla-carousel-autoplay";
+import SmartImage from "@/components/shared/SmartImage";
 
 const Team = () => {
   const autoplay = Autoplay({
@@ -41,12 +41,12 @@ const Team = () => {
                 <DialogTrigger asChild>
                   <div className="cursor-pointer hover:scale-105 transition duration-300 ease-in-out">
                     <div className="overflow-hidden rounded-lg shadow-md">
-                      <Image
+                      <SmartImage
                         src={teacher.image}
                         alt={teacher.name}
                         width={500}
                         height={500}
-                        className="w-full h-72 object-cover"
+                        className="w-full h-100 object-cover"
                       />
                     </div>
                     <div className="flex items-center mt-4">
@@ -60,7 +60,7 @@ const Team = () => {
 
                 <DialogContent className="bg-background max-w-3xl max-h-[90vh] overflow-y-auto p-6 grid md:grid-cols-2 gap-6">
                   <div className="w-full">
-                    <Image
+                    <SmartImage
                       src={teacher.image}
                       alt={teacher.name}
                       width={500}

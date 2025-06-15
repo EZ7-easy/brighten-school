@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import SmartImage from "@/components/shared/SmartImage";
 
 const Map = () => {
   return (
@@ -47,7 +47,7 @@ const Map = () => {
       </div>
 
       <div>
-        <Image
+        <SmartImage
           src={"/home/location-photo.jpg"}
           alt={"location-photo"}
           width={500}

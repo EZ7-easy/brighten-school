@@ -11,11 +11,11 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { AlignCenter, LogOut } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { navLinks } from "@/constants";
 import { SignedIn, SignOutButton, UserButton } from "@clerk/nextjs";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import SmartImage from "@/components/shared/SmartImage";
 
 type Props = {
   t: Record<string, string>;
@@ -38,7 +38,7 @@ function Mobile({ t }: Props) {
             <SheetTitle>{t.Menu ?? "Mobile Navigation"}</SheetTitle>
           </VisuallyHidden>
 
-          <Image
+          <SmartImage
             src="/logo.jpg"
             alt="logo"
             width={160}

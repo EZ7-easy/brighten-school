@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import SmartImage from "@/components/shared/SmartImage";
 import { useState } from "react";
 
 function Scores() {
@@ -27,7 +27,7 @@ function Scores() {
           </div>
         </div>
 
-        <Image
+        <SmartImage
           src={"/home/i-result1.webp"}
           alt={"i-result"}
           width={500}

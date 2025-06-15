@@ -1,4 +1,4 @@
-import Image from "next/image";
+import SmartImage from "./SmartImage";
 
 interface Props {
   title: string;
@@ -8,7 +8,7 @@ interface Props {
 function NoResult({ description, title }: Props) {
   return (
     <div className="mt-10 flex w-full flex-col items-center justify-center">
-      <Image
+      <SmartImage
         src="/not-found.jpg"
         alt="No result illustration"
         width={270}
