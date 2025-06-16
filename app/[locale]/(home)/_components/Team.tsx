@@ -39,7 +39,11 @@ const Team = () => {
             >
               <Dialog>
                 <DialogTrigger asChild>
-                  <div className="cursor-pointer hover:scale-105 transition duration-300 ease-in-out">
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    className="cursor-pointer hover:scale-105 transition duration-300 ease-in-out"
+                  >
                     <div className="overflow-hidden rounded-lg shadow-md">
                       <SmartImage
                         src={teacher.image}
