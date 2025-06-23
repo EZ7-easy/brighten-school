@@ -48,7 +48,7 @@ const Map = () => {
 
       <div>
         <SmartImage
-          src={"/home/location-photo.jpg"}
+          src={"/home/location-photo.webp"}
           alt={"location-photo"}
           width={500}
           height={500}
