@@ -145,3 +145,78 @@ export const musics = [
     src: "/listening/8.mp3",
   },
 ];
+
+export const carouselItems = [
+  {
+    imageSrc: "/home/i-result1.webp",
+    ieltsScore: "7.5",
+    cefrScore: "C1",
+    name: "John Doe",
+    fullText:
+      "John achieved an impressive IELTS score of 7.5, demonstrating his proficiency in English at a C1 level.",
+    shortText: "John's IELTS score is 7.5 (C1 level).",
+  },
+  {
+    imageSrc: "/home/i-result1.webp",
+    ieltsScore: "8.0",
+    cefrScore: "C2",
+    name: "Jane Smith",
+    fullText:
+      "Jane scored 8.0 in her IELTS exam, showcasing her advanced English skills at a C2 level.",
+    shortText: "Jane's IELTS score is 8.0 (C2 level).",
+  },
+  {
+    imageSrc: "/home/i-result1.webp",
+    ieltsScore: "8.0",
+    cefrScore: "C2",
+    name: "Jane Smith1",
+    fullText:
+      "Jane scored 8.0 in her IELTS exam, showcasing her advanced English skills at a C2 level.",
+    shortText: "Jane's IELTS score is 8.0 (C2 level).",
+  },
+  {
+    imageSrc: "/home/i-result1.webp",
+    ieltsScore: "8.0",
+    cefrScore: "C2",
+    name: "Jane Smith2",
+    fullText:
+      "Jane scored 8.0 in her IELTS exam, showcasing her advanced English skills at a C2 level.",
+    shortText: "Jane's IELTS score is 8.0 (C2 level).",
+  },
+  {
+    imageSrc: "/home/i-result1.webp",
+    ieltsScore: "8.0",
+    cefrScore: "C2",
+    name: "Jane Smith3",
+    fullText:
+      "Jane scored 8.0 in her IELTS exam, showcasing her advanced English skills at a C2 level.",
+    shortText: "Jane's IELTS score is 8.0 (C2 level).",
+  },
+  {
+    imageSrc: "/home/i-result1.webp",
+    ieltsScore: "8.0",
+    cefrScore: "C2",
+    name: "Jane Smith4",
+    fullText:
+      "Jane scored 8.0 in her IELTS exam, showcasing her advanced English skills at a C2 level.",
+    shortText: "Jane's IELTS score is 8.0 (C2 level).",
+  },
+  {
+    imageSrc: "/home/i-result1.webp",
+    ieltsScore: "8.0",
+    cefrScore: "C2",
+    name: "Jane Smith5",
+    fullText:
+      "Jane scored 8.0 in her IELTS exam, showcasing her advanced English skills at a C2 level.",
+    shortText: "Jane's IELTS score is 8.0 (C2 level).",
+  },
+  {
+    imageSrc: "/home/i-result1.webp",
+    ieltsScore: "8.0",
+    cefrScore: "C2",
+    name: "Jane Smith6",
+    fullText:
+      "Jane scored 8.0 in her IELTS exam, showcasing her advanced English skills at a C2 level.",
+    shortText: "Jane's IELTS score is 8.0 (C2 level).",
+  },
+];
